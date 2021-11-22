@@ -8,9 +8,9 @@
 
 	if(!empty($_POST))
 	{
-		//print_r($_FILES); // verificar lo que trae post  por medio del arraglo.
+		// print_r($_FILES); // verificar lo que trae post  por medio del arraglo.
 		$alert='';
-		if (empty($_POST['proveedor']) || empty($_POST['producto']) || empty($_POST['precio'])   || empty($_POST['id']) || empty($_POST['foto_actual']) || empty($_POST['foto_remove'])) 
+		if (empty($_POST['proveedor']) || empty($_POST['producto']) || empty($_POST['precio'])  || empty($_POST['cantidad'])) 
 		{
 			$alert='<p class="msg_error">Todos los campos son obligatorios.</p>';
 		}else{
@@ -19,6 +19,7 @@
 			$proveedor    = $_POST['proveedor'];
 			$producto 	  = $_POST['producto']; 
 			$precio  	  = $_POST['precio'];
+			$cantidad	  = $_POST['cantidad'];
 			$imgProducto  = $_POST['foto_actual'];
 			$imgRemove    = $_POST['foto_remove'];
 
@@ -45,6 +46,7 @@
 			$query_update = mysqli_query($conection, "UPDATE producto
 													SET descripcion = '$producto',
 														proveedor = '$proveedor',
+														existencia = '$cantidad',
 														precio = $precio,
 														foto = '$imgProducto'
 													WHERE codproducto = $codproducto");
@@ -75,7 +77,7 @@
 			header("location: lista_producto.php");
 		}
 
-		$query_producto = mysqli_query($conection, "SELECT p.codproducto,p.descripcion,p.precio,p.foto,
+		$query_producto = mysqli_query($conection, "SELECT p.codproducto,p.descripcion,p.precio,p.existencia,p.foto,
 															pr.codproveedor,pr.proveedor
 		 											FROM producto p 
 		 											INNER JOIN proveedor pr 
@@ -151,8 +153,12 @@
 
 				<label for="producto">Producto</label>
 				<input type="text" name="producto" id="producto" placeholder="Descripcion del producto" value="<?php echo $data_producto['descripcion'];?>">
+
 				<label for="precio">Precio</label>
 				<input type="number" name="precio" id="precio" placeholder="Precio del Producto" value="<?php echo $data_producto['precio'];?>">
+
+				<label for="cantidad">Cantidad</label>
+		    	<input type="number" name="cantidad" id="cantidad" placeholder="Cantidad del Producto" value="<?php echo $data_producto['existencia'];?>">
 
 				<div class="photo">
 					<label for="foto">Foto</label>

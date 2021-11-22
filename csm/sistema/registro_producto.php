@@ -39,10 +39,10 @@
 
 			$query_insert = mysqli_query($conection, "INSERT INTO producto(
 								proveedor,descripcion,precio,existencia,usuario_id,foto)
-					      					VALUES('$proveedor','$producto','$precio','$cantidad','$usuario_id','$imgProducto')");
+					      					VALUES('$producto','$proveedor','$precio','$cantidad','$usuario_id','$imgProducto')");
 			if($query_insert){
 				if($nombre_foto != ''){
-					move_uploaded_file($url_temp,$src); // almcena la ruta del archivo y lo mueve a la nueva ruta
+					move_uploaded_file($url_temp,$src); // almacena la ruta del archivo y lo mueve a la nueva ruta
 				}
 				$alert='<p class="msg_save">Producto Guardado Correctamente.</p>';
 			}else{
@@ -74,7 +74,7 @@
 
 				<?php 
 					
-					$query_proveedor = mysqli_query($conection, "SELECT * FROM proveedor WHERE estatus = 1 											ORDER BY proveedor ASC");
+					$query_proveedor = mysqli_query($conection, "SELECT * FROM proveedor WHERE estatus = 1 	ORDER BY proveedor ASC");
 					$result_proveedor = mysqli_num_rows($query_proveedor);
 					mysqli_close($conection);
 
@@ -116,7 +116,7 @@
 				        <div id="form_alert"></div>
 				</div>
 
-				<button type="submit" class="btn_save"><i class="far fa-save"></i> Guarda Producto</button>
+				<button type="submit" class="btn_save"><i class="far fa-save"></i> Guardar Producto</button>
 				<a href="lista_producto.php" class="btn_return"><i class="fas fa-undo-alt"></i> Regresar</a>
 			</form>
 			

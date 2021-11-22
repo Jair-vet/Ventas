@@ -3,9 +3,9 @@
 		
 	if(empty($_SESSION['active']))
 	{
-		header('location: ../');
+		header('location: ../../');
 	} 
-	include "../../conexion.php";
+	include "../conexion.php";
 
 
 ?>
@@ -13,16 +13,16 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8"/>
-	<?php include "../includes/scripts.php"; ?>
+	<?php include "includes/scripts.php"; ?>
 	<title>Administración Ventas</title>
 </head>
 <body>
-	<?php include "../includes/header.php"; ?>
+	<?php include "includes/header.php"; ?>
 	<section id="container1">
 
 		<h1>Ventas Cerradas</h1>
 		<section>
-		<center><a href="../../csm/sistema/index.php" class="aceptar">Index</a></center>
+		<center><a href="../../csm/sistema/index.php" class="aceptar">Inicio</a></center>
 		<table style="width: 200px; margin-left: auto;margin-right: auto;border: solid;">	
 			<tr >
 				<td>VENTAS CERRADAS</td>
@@ -48,6 +48,6 @@
 			?>
 		</table>
 	</section>
-	<?php include "../includes/footer.php"; ?>
+	<?php include "includes/footer.php"; ?>
 </body>
 </html>
