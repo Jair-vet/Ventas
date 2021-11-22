@@ -1,12 +1,11 @@
 <?php 
 	
 	session_start();
-	if($_SESSION['rol'] != 1)
-	{
+	include "../conexion.php";
+	if($_SESSION['rol'] != 1 and $_SESSION['rol'] != 2 ) // Solo Admi y Supervisores pueden ver
+	{ 
 		header("location: ./");
 	}
-
-	include "../conexion.php";
 
 	if(!empty($_POST))
 	{
@@ -16,14 +15,14 @@
 			$alert='<p class="msg_error">Todos los campos son obligatorios.</p>';
 		}else{
 
-			$idUsuario = $_POST['idUsuario'];
-			$nombre = $_POST['nombre'];
-			$email  = $_POST['correo'];
-			$user   = $_POST['usuario'];
-			$clave  = md5($_POST['clave']);
-			$rol    = $_POST['rol'];
+			$idUsuario 	= $_POST['idUsuario'];
+			$nombre 	= $_POST['nombre'];
+			$email  	= $_POST['correo'];
+			$user   	= $_POST['usuario'];
+			$clave  	= md5($_POST['clave']);
+			$rol    	= $_POST['rol'];
 
- 
+			
 			$query = mysqli_query($conection,"SELECT * FROM usuario 
 													   WHERE (usuario = '$user' AND idusuario != $idUsuario)
 													   OR (correo = '$email' AND idusuario != $idUsuario) ");
@@ -46,8 +45,10 @@
 															WHERE idusuario= $idUsuario ");
 
 				}
+	
 
 				if($sql_update){
+				
 					$alert='<p class="msg_save">Usuario actualizado correctamente.</p>';
 				}else{
 					$alert='<p class="msg_error">Error al actualizar el usuario.</p>';
@@ -68,7 +69,7 @@
 	}
 	$iduser = $_REQUEST['id'];
 
-	$sql= mysqli_query($conection,"SELECT u.idusuario, u.nombre,u.correo,u.usuario,u.foto, (u.rol) as idrol, (r.rol) as rol
+	$sql= mysqli_query($conection,"SELECT u.idusuario, u.nombre,u.correo,u.usuario, (u.rol) as idrol, (r.rol) as rol
 									FROM usuario u
 									INNER JOIN rol r
 									on u.rol = r.idrol
@@ -90,7 +91,6 @@
 			$usuario = $data['usuario'];
 			$idrol   = $data['idrol'];
 			$rol     = $data['rol'];
-			$foto    = $data['foto'];
 
 			if($idrol == 1){
 				$option = '<option value="'.$idrol.'" select>'.$rol.'</option>';
@@ -100,10 +100,6 @@
 				$option = '<option value="'.$idrol.'" select>'.$rol.'</option>';
 			}
 
-			if($data['foto'] != 'img_adm.png'){
-				$classRemove = '';
-				$foto = '<img id="img" src="img/uploads2/'.$data['foto'].'" alt="Producto">';
-			}
 
 
 		}
@@ -129,17 +125,20 @@
 
 			<form action="" method="post">
 				<input type="hidden" name="idUsuario" value="<?php echo $iduser; ?>">
-				<input type="hidden" id="foto_actual" name="foto_actual" value="<?php echo $data_producto['foto']; ?>">
-				<input type="hidden" id="foto_remove" name="foto_remove" value="<?php echo $data_producto['foto']; ?>">
+				<input type="hidden" id="foto_actual" name="foto_actual" value="<?php echo $data['foto']; ?>">
+				<input type="hidden" id="foto_remove" name="foto_remove" value="<?php echo $data['foto']; ?>">
 
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre completo" value="<?php echo $nombre; ?>">
+				
 				<label for="correo">Correo electrónico</label>
 				<input type="email" name="correo" id="correo" placeholder="Correo electrónico" value="<?php echo $correo; ?>">
+				
 				<label for="usuario">Usuario</label>
 				<input type="text" name="usuario" id="usuario" placeholder="Usuario" value="<?php echo $usuario; ?>">
-				<label for="clave">Clave</label>
-				<input type="password" name="clave" id="clave" placeholder="Clave de acceso">
+				
+				<label for="clave">Contraseña</label>
+				<input type="password" name="clave" id="clave" placeholder="Contraseña de acceso">
 				<label for="rol">Tipo Usuario</label>
 
 				<?php 
@@ -166,18 +165,7 @@
 					 ?>
 				</select>
 				
-				<div class="photo">
-					<label for="foto">Foto</label>
-				        <div class="prevPhoto">
-				        <span class="delPhoto <?php echo $classRemove; ?> ">X</span>
-				        <label for="foto"></label>
-				         <?php echo $foto; ?>
-				        </div>
-				        <div class="upimg">
-				        <input type="file" name="foto" id="foto">
-				        </div>
-				        <div id="form_alert"></div>
-				</div>
+				
 				<input type="submit" value="Actualizar usuario" class="btn_save">
 				<a href="lista_usuarios.php" class="btn_return"><i class="fas fa-undo-alt"></i> Regresar</a>
 
