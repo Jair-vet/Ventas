@@ -46,14 +46,14 @@
 <head>
 	<meta charset="UTF-8"> 
 	<title>Registro Usuario</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style1.css">
 </head>
 <body>
 	<section id="container">	
 
 		<div class="form_register">
 			<h1> Registrar Usuario</h1>
-			<hr>
+			
 			<div class="alert"><?php echo isset($alert) ? $alert : ' '; ?></div>	
 
 			<form action="" method="post" enctype="multipart/form-data">
@@ -77,5 +77,7 @@
 			</form>
 		</div>
 	</section>
+	<?php include "./sistema/includes/footer.php"; ?>
+
 </body>
 </html>
