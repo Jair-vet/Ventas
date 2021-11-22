@@ -10,14 +10,15 @@
 	{
 		// print_r($_FILES); // verificar lo que trae post  por medio del arraglo.
 		$alert='';
-		if (empty($_POST['proveedor']) || empty($_POST['producto']) || empty($_POST['precio'])  || empty($_POST['cantidad'])) 
+		if (empty($_POST['proveedor']) || empty($_POST['descripcion']) || empty($_POST['precio'])  || empty($_POST['nombre']) ) 
 		{
 			$alert='<p class="msg_error">Todos los campos son obligatorios.</p>';
 		}else{
 
 			$codproducto  = $_POST['id'];
 			$proveedor    = $_POST['proveedor'];
-			$producto 	  = $_POST['producto']; 
+			$descripcion  = $_POST['descripcion']; 
+			$nombre 	  = $_POST['nombre']; 
 			$precio  	  = $_POST['precio'];
 			$cantidad	  = $_POST['cantidad'];
 			$imgProducto  = $_POST['foto_actual'];
@@ -44,11 +45,12 @@
 			}
 
 			$query_update = mysqli_query($conection, "UPDATE producto
-													SET descripcion = '$producto',
-														proveedor = '$proveedor',
-														existencia = '$cantidad',
-														precio = $precio,
-														foto = '$imgProducto'
+													SET descripcion  = '$descripcion',
+														nombre		 = '$nombre',
+														proveedor 	 = '$proveedor',
+														existencia	 = '$cantidad',
+														precio 		 = $precio,
+														foto 		 = '$imgProducto'
 													WHERE codproducto = $codproducto");
 			if($query_update){
 
@@ -77,7 +79,7 @@
 			header("location: lista_producto.php");
 		}
 
-		$query_producto = mysqli_query($conection, "SELECT p.codproducto,p.descripcion,p.precio,p.existencia,p.foto,
+		$query_producto = mysqli_query($conection, "SELECT p.codproducto,p.descripcion,p.nombre,p.precio,p.existencia,p.foto,
 															pr.codproveedor,pr.proveedor
 		 											FROM producto p 
 		 											INNER JOIN proveedor pr 
@@ -151,8 +153,11 @@
 					
 				</select>
 
-				<label for="producto">Producto</label>
-				<input type="text" name="producto" id="producto" placeholder="Descripcion del producto" value="<?php echo $data_producto['descripcion'];?>">
+				<label for="nombre">Nombre</label>
+				<input type="text" name="nombre" id="nombre" placeholder="Nombre del producto" value="<?php echo $data_producto['nombre'];?>">
+				
+				<label for="descripcion">Descripcion</label>
+				<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion del producto" value="<?php echo $data_producto['descripcion'];?>">
 
 				<label for="precio">Precio</label>
 				<input type="number" name="precio" id="precio" placeholder="Precio del Producto" value="<?php echo $data_producto['precio'];?>">
