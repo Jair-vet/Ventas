@@ -52,11 +52,14 @@
 	<section id="container">	
 
 		<div class="form_register">
-			<h1> Registrar Usuario</h1>
 			
-			<div class="alert"><?php echo isset($alert) ? $alert : ' '; ?></div>	
-
 			<form action="" method="post" enctype="multipart/form-data">
+
+				<h3> Registrar Usuario</h3>
+				<img src="img/login.jpg" alt="Login">
+
+				<div class="alert"><?php echo isset($alert) ? $alert : ' '; ?></div>	
+
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre Completo"> 
 
@@ -75,7 +78,7 @@
 				<input type="submit" class="btn_save" value="Crear Usuario">
 				<a href="index.php" class="btn_exit"> Salir</a>
 			</form>
-		</div>
+		
 	</section>
 	<?php include "./sistema/includes/footer.php"; ?>
 

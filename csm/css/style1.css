@@ -23,7 +23,15 @@ h2{
 	font-size: 20px; 
 }
 h3{
-	font-size: 18px;
+    font-family: 'Arial';
+    font-size: 25pt;
+    letter-spacing: 1px;
+    width: 100%;
+    background: #2980b9;
+    padding: 15px;
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
 }
 h4{
 	font-size: 16px;
@@ -67,6 +75,11 @@ header{
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px;
+}
+#container form img {
+    margin: 15px auto;
+    text-align: center;
+    display: block;
 }
 
 nav ul{
@@ -132,8 +145,11 @@ nav li ul li:last-child{
 	padding: 90px 15px 15px;
 	text-align: center;
 }
-#container{
-	padding: 90px 15px 15px;
+#container form{
+    background: rgb(255,255,255,0.3);
+    width: 400px;
+    height: auto;
+    padding: 10px;
 }
 /*****************************************************************/
 
@@ -158,11 +174,13 @@ form{
 	padding: 20px 50px;
 	border: 1px solid #d1d1d1;
 }
-label{
-	display: block;
-	font-size: 12pt;
-	font-family: 'GothamBook';
-	margin: 15px auto 5px auto;
+label {
+    display: block;
+    font-size: 15pt;
+    font-family: 'GothamBook';
+    margin: 15px auto 5px auto;
+    text-align: inherit;
+    color: black;
 }
 input,select{
 	display: block;
@@ -177,7 +195,7 @@ input,select{
 }
 .btn_save{
 	font-size: 12pt;
-	background: #2d9872;;
+	background: #52be80;
 	padding: 10px;
 	color: #FFF;
 	letter-spacing: 1px;
@@ -188,6 +206,7 @@ input,select{
 	border-radius: 5px;
 	text-align: center;
 }
+
 .btn_exit{
 	font-size: 12pt;
 	background: #e65656;
