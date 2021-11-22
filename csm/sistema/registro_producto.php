@@ -10,16 +10,17 @@
 	{
 		//print_r($_FILES); // verificar lo que trae post  por medio del arraglo.
 		$alert='';
-		if (empty($_POST['proveedor']) || empty($_POST['producto']) || empty($_POST['precio'])  || empty($_POST['cantidad'])) 
+		if (empty($_POST['proveedor']) || empty($_POST['descripcion']) || empty($_POST['precio'])  || empty($_POST['existencia']) || empty($_POST['nombre']) ) 
 		{
 			$alert='<p class="msg_error">Todos los campos son obligatorios.</p>';
 		}else{
 
-			$proveedor  = $_POST['proveedor'];
-			$producto 	= $_POST['producto']; 
-			$precio  	= $_POST['precio'];
-			$cantidad   = $_POST['cantidad'];
-			$usuario_id = $_SESSION['idUser'];
+			$proveedor   = $_POST['proveedor'];
+			$nombre  	 = $_POST['nombre'];
+			$descripcion = $_POST['descripcion']; 
+			$precio  	 = $_POST['precio'];
+			$existencia  = $_POST['existencia'];
+			$usuario_id  = $_SESSION['idUser'];
 
 			$foto        = $_FILES['foto']; 
 			$nombre_foto = $foto['name'];
@@ -38,8 +39,8 @@
 			}
 
 			$query_insert = mysqli_query($conection, "INSERT INTO producto(
-								proveedor,descripcion,precio,existencia,usuario_id,foto)
-					      					VALUES('$producto','$proveedor','$precio','$cantidad','$usuario_id','$imgProducto')");
+											descripcion, proveedor, nombre, precio, existencia, usuario_id, foto)
+					      					VALUES('$descripcion','$proveedor', '$nombre' ,'$precio', '$existencia','$usuario_id','$imgProducto')");
 			if($query_insert){
 				if($nombre_foto != ''){
 					move_uploaded_file($url_temp,$src); // almacena la ruta del archivo y lo mueve a la nueva ruta
@@ -94,15 +95,17 @@
 					?>
 					
 				</select>
+				<label for="nombre">Nombre del Producto</label>
+				<input type="text" name="nombre" id="nombre" placeholder="Nombre del producto">
 
-				<label for="producto">Producto</label>
-				<input type="text" name="producto" id="producto" placeholder="Descripcion del producto">
+				<label for="descripcion">Descripcion del Producto</label>
+				<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion del producto">
 
 				<label for="precio">Precio</label>
 				<input type="number" name="precio" id="precio" placeholder="Precio del Producto">
 
-				<label for="cantidad">Cantidad</label>
-		    	<input type="number" name="cantidad" id="cantidad" placeholder="Cantidad del Producto">
+				<label for="existencia">Cantidad</label>
+		    	<input type="number" name="existencia" id="existencia" placeholder="Cantidad del Producto">
 
 				<div class="photo">
 					<label for="foto">Foto</label>
