@@ -23,6 +23,7 @@
 				# code...
 				$idproducto  =$data['codproducto'];
 				$descripcion =$data['descripcion'];
+				$nombre		 =$data['nombre'];
 				$precio      =$data['precio'];
 				$existencia  =$data['existencia'];
 				$proveedor   =$data['proveedor'];
@@ -40,7 +41,7 @@
 			header("location: lista_producto.php");
 		}
 
-		$query_producto = mysqli_query($conection, "SELECT p.codproducto,p.descripcion,p.precio,p.existencia,													p.foto,pr.codproveedor,pr.proveedor
+		$query_producto = mysqli_query($conection, "SELECT p.codproducto,p.nombre,p.descripcion,p.precio,p.existencia,													p.foto,pr.codproveedor,pr.proveedor
 		 											FROM producto p 
 		 											INNER JOIN proveedor pr 
 		 											ON p.proveedor = pr.codproveedor
@@ -82,10 +83,11 @@
 			<div class="alert"><?php echo isset($alert) ? $alert : ' '; ?></div>	
 			<form action="" method="post" enctype="multipart/form-data">
 
-				<p> Nombre:     <span><?php echo $data_producto['descripcion']; ?></span></p>
-				<p> Precio:     <span><?php echo $data_producto['precio'] ?></span></p>
-				<p> Existencia: <span><?php echo $data_producto['existencia'] ?></span></p>
-				<p> Proveedor: <span><?php echo $data_producto['proveedor'] ?></span></p>
+				<p> Nombre:     	<span><?php echo $data_producto['nombre']; ?></span></p>
+				<p> Descripcion:    <span><?php echo $data_producto['descripcion']; ?></span></p>
+				<p> Precio: 		<span><?php echo '$' ?></span>   <span><?php echo $data_producto['precio'] ?></span></p>
+				<p> Existencia: 	<span><?php echo $data_producto['existencia'] ?></span> <span><?php echo 'Productos' ?></span></p> 
+				<p> Proveedor: 		<span><?php echo $data_producto['proveedor'] ?></span></p>
 				<div class="photo">
 					<label for="foto">Foto</label>
 				        <div class="prevPhoto">
