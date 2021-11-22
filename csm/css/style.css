@@ -112,23 +112,36 @@ input,select{
 	justify-content: center;
 	align-items: center;
 }
-.btn_return{
+.msg_save{
+	color:  #126e00;
+}
+.btn_return{ 
 	color: #808080;
 	width: 124px;
 	font-size: 12pt;
 	text-align: center;
 	margin: 120px;
 }
-.btn_exit{
-	margin: 150px;
-	width: 90px;
-	background:#f408087d;
+.btn_save{
+	font-size: 12pt;
+	background: #12a4c6;
 	padding: 10px;
 	color: #FFF;
 	letter-spacing: 1px;
 	border: 0;
 	cursor: pointer;
-	text-decoration: none;
+	margin: 20px auto 15px auto;
+	display: block;
+	border-radius: 5px;
+	text-align: center;
+}
+.btn_exit{
+	font-size: 16px;
+	font-family: arial;
+	color: #cc0000;
+	text-align: center;
+	font-weight: bold; 
+	margin-top: 10px;
 }
 .prevPhoto {
     display: flex;

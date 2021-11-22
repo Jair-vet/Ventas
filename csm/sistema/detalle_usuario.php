@@ -21,9 +21,7 @@
 
 		$data = mysqli_fetch_array($sql);
 	
-		if($data['foto'] != 'img_adm.png'){
-			$classRemove = '';
-			$foto = '<img id="img" src="img/uploads2/'.$data['foto'].'" alt="Adm">';
+		
 
 			if($data['rol'] == '1' || $data['rol'] == '2' || $data['rol'] == '3' ){
 				$data['rol'] = 'Activo';
@@ -31,7 +29,7 @@
 				$data['rol'] = 'In-Activo';
 		}
 	} 
-}
+
 			
 
 ?>
@@ -59,18 +57,7 @@
 		
 			<form method="post" action="">
 				<input type="hidden" name="idUser" value="<?php echo $idusuario; ?>" >
-				<div class="photo">
-					<label for="foto">Foto</label>
-				        <div class="prevPhoto">
-				        <span class="delPhoto notBlock">X</span>
-				        <label for="foto"></label>
-				        <?php echo $foto; ?>
-				        </div>
-				        <div class="upimg">
-				        <input type="file" name="foto" id="foto">
-				        </div>
-				        <div id="form_alert"></div>
-				</div>
+				
 				<a href="lista_usuarios.php" class="btn_cancel"><i class="fas fa-undo-alt"></i> Regresar</a>
 			</form>
 			
