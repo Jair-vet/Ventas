@@ -1,5 +1,5 @@
 <?php
-	include "../conexion.php";
+	include "conexion.php";
 
 	$query = mysqli_query($conection, "SELECT * FROM producto WHERE 1");
 	$result = mysqli_fetch_array($query);
@@ -10,22 +10,21 @@
 	}
 ?>
 <!DOCTYPE html>
-<html lang="es"> 
+<html lang="es">
 
 <head>
-    <title> CATALOGO PRODUCTOS </title>
+    <title> INICIO </title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
-	<?php include "./includes/scripts.php"; ?>
-	<?php include "./includes/nav2.php"; ?>
+	<?php include "incluides/nav.php"; ?>
 
     <br>
     <br>
     <div class="banner">
-    	<?php include "includes/ads.php"; ?>
+    	<?php include "incluides/ads.php"; ?>
     </div>
 
   <br>
@@ -72,7 +71,7 @@
 							$foto        = $p[6];
 
 							if($foto != 'img_producto.png'){
-							$foto = 'img/uploads/'.$foto;
+							$foto = 'csm/sistema/img/uploads/'.$foto;
 							}else{
 							$foto = 'img/'.$foto;
 							}
@@ -81,7 +80,7 @@
 					<img class="img_producto1" src=" <?php echo $foto; ?>">
 					<span><?php echo $nombre ?></span><br>
 					<span>$ <?php echo $precio ?></span><br>
-					<a href="./ver_producto1.php?id=<?php echo $codproducto;?>" class="btn_save">Ver</a>
+					<a href="ver_producto.php?id=<?php echo $codproducto;?>" class="btn_save">Ver</a>
 				</div>
 
 				<?php
@@ -92,7 +91,8 @@
 			</div>
 			</table>
 </body>
-<?php include "includes/footer.php"; ?>
+<?php include "incluides/footer.php"; ?>
 
 
 </html>
+

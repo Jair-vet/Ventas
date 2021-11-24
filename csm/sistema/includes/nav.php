@@ -12,18 +12,7 @@
 						</ul>
 					</li>
 			<?php }?>
-			<?php
-				if($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2 ){
-			?>
-				<li class="principal">
-					<a href="#"><i class="fas fa-users"></i> Clientes</a>
-					<ul>
-						<li><a href="registro_cliente.php"><i class="fas fa-user-plus"></i> Nuevo Cliente</a></li>
-						<li><a href="lista_clientes.php"><i class="far fa-list-alt"></i> Lista de Clientes</a></li>
-					</ul>
-				</li>
-			<?php } ?>
-
+			
 			<?php
 				if($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2 ){
 			?>
@@ -50,7 +39,7 @@
 				<li class="principal">
 					<a href="#"><i class="fab fa-amazon-pay fa-1x"></i> Catalogo</a>
 					<ul>
-						<li><a href="catalogo1.php"><i class="fas fa-eye"></i> Ver Productos</a></li>
+						<li><a href="./catalogo1.php"><i class="fas fa-eye"></i> Lista de Productos</a></li>
 					</ul>
 				</li>
 				<?php

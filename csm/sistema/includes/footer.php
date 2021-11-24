@@ -1,5 +1,5 @@
 <footer>
-	Derechos Reservados: &copy; 2020 <br> <br>
+	Derechos Reservados: &copy; 2021 <br> <br>
 	AUTORES: 	<br>Aceves García Carlos Jair <br>
 			Gudiño Romero Jesus Alejandro <br>
 			Sandoval Lupercio Luis Albero <br>

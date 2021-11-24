@@ -8,7 +8,7 @@
 ?>
 <header>
 	<div class="header">
-		<h1><i class="fab fa-aws"></i> Sistema de Ventas</h1>
+		<h1><i class="fab fa-aws"></i> Sistema de Ventas Para Alumnos</h1>
 			<div class="optionsBar">
 				<p>México, <?php echo fechaC(); ?></p>
 				<span>|</span>

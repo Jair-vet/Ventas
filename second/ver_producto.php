@@ -1,28 +1,14 @@
-<?php
-	include "../conexion.php";
 
-	$query = mysqli_query($conection, "SELECT * FROM producto WHERE 1");
-	$result = mysqli_fetch_array($query);
-	if(!$result){
-		echo'Hay un error de sql: '.$query;
-	}else{
-		$data = mysqli_fetch_array($query);
-	}
-?>
 <!DOCTYPE html>
-<html lang="es"> 
-
+<html lang="en">
 <head>
-    <title> PRODUCTOS </title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../../css/estilos.css">
+	<meta charset="UTF-8">
+	<title>Detalle Producto</title>
 </head>
-
 <body>
-	<?php include "includes/scripts.php"; ?>
-	<?php include "includes/nav2.php"; ?>
-
-    <section id="container">
+	<?php include "incluides/nav.php"; ?>
+	<link rel="stylesheet" href="css/estilos.css">
+	<section id="container">
 
 		<div class="data_delete">
 			<h1>Detalle Producto</h1>
@@ -30,7 +16,7 @@
 			<section id="edit" method="post" enctype="multipart/form-data">
 
 				<?php
-					include '../conexion.php';
+					include 'conexion.php';
 					// Validar Producto
 					if(empty($_REQUEST['id'])){
 						header("location: productop.php");
@@ -55,7 +41,7 @@
 
 							if($data_producto['foto'] != 'img_produto.png'){
 								$classRemove = '';
-								$foto = '<img id="img" src="./img/uploads/'.$data_producto['foto'].'" alt="Producto">';
+								$foto = '<img id="img" src="csm/sistema/img/uploads/'.$data_producto['foto'].'" alt="Producto">';
 							}
 
 						}else{
@@ -76,22 +62,15 @@
 					<span>Nombre: <?php echo $data_producto['nombre']; ?></span><br>
 					<span>Descipcion: <?php echo $data_producto['descripcion']; ?></span><br>
 		 			<span>Precio:$ <?php echo $data_producto['precio']; ?></span><br>
-
-					 <a href="./carrito.php?id=<?php echo $id_producto ?>" class="btn_add"> Agregar</a>
-					 <a href="./todos.php" class="btn_cancel"> Regresar</a>
-			 
 				</center>
+				<a href="carrito.php?id=<?php echo $id_producto ?>" class="btn_add"> Agregar</a>
+				<a href="productosp.php" class="btn_cancel"> Regresar</a>
 			</section>
 		
 		</div>
 
 	</section>
-	<br>
-	<br>
-	<br>
-	<br>
+	<?php include "incluides/footer.php"; ?>
+
 </body>
-<?php include "includes/footer.php"; ?>
-
-
 </html>
