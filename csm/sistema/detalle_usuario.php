@@ -29,7 +29,6 @@
 				$data['rol'] = 'In-Activo';
 		}
 	} 
-
 			
 
 ?>

@@ -17,7 +17,11 @@ h1{
 	font-size: 26px;
 }
 h2{
+<<<<<<< HEAD
 	font-size: 20px; 
+=======
+	font-size: 20px;
+>>>>>>> refs/remotes/origin/main
 }
 h3{
 	font-size: 18px;
