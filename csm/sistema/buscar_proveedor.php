@@ -51,6 +51,7 @@
 															WHERE (codproveedor LIKE '%$busqueda%' OR
 																	proveedor 	LIKE '%busqueda%' OR 
 																	contacto    LIKE '%$busqueda' OR
+																	direccion   LIKE '%$busqueda' OR
 																	telefono    LIKE '%$busqueda'
 																 )
 															AND estatus = 1 " );
@@ -75,6 +76,7 @@
 						  (codproveedor  LIKE '%$busqueda%' OR    
 						    proveedor    LIKE '%$busqueda%' OR
 							contacto     LIKE '%$busqueda%' OR
+							direccion   LIKE '%$busqueda' OR
 							telefono     LIKE '%$busqueda%' 
 						 )
 					AND

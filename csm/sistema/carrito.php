@@ -133,6 +133,7 @@
    					class="cantidad">
    				</span><br>
    				<span class="subtotal">SubTotal:$ <?php echo $datos[$i]['Cantidad']*$datos[$i]['Precio'];?></span><br>
+				   
    				<a href="#" class="eliminar" data-id="<?php echo $datos[$i]['Id']= null ?>">Eliminar</a>
    			</center>
    		</div>

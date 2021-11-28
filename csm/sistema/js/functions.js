@@ -223,4 +223,4 @@ function closeModal(){
     $('#txtCantidad').val('');
     $('#txtPrecio').val('');
     $('.modal').fadeOut();
-}
+} 
