@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	if($_SESSION['rol'] != 1 and $_SESSION['rol'] != 2 )
+	{
+		header("location: ./");
+	}
 	include "../conexion.php";
 ?>
 
@@ -19,21 +23,25 @@
 			if (empty($_REQUEST['busqueda']) && empty($_REQUEST['proveedor']))
 			 {
 				header("location: lista_producto.php");
+				mysqli_close($conection);
 			}
 			if(!empty($_REQUEST['busqueda'])){
 				$busqueda = strtolower($_REQUEST['busqueda']);
-				$where="";
+				
+				//
+		
 			}
 			if(!empty($_REQUEST['proveedor'])){
 				$search_proveedor = ($_REQUEST['proveedor']);
-				$where= "proveedor LIKE $search_proveedor AND estatus = 1";			}
+				// $where= "proveedor LIKE $search_proveedor AND estatus = 1";			
+			}
 		?>
 
 		<h1><i class="fas fa-cube "></i> Lista de Productos</h1>
 		<a href="registro_producto.php" class="btn_new"><i class="fas fa-plus"></i> Registrar Producto</a>
 
 		<form action="buscar_producto.php" method="get" class="form_search">
-			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
+			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>">
 			<button type="submit" class="btn_search">Buscar <i class="fas fa-search-plus"></i></button>
 		</form>
 
@@ -41,51 +49,27 @@
 			<tr>
 				<th>Código</th>
 				<th>Descripción</th>
+				<th>Nombre</th>
 				<th>Precio</th>
 				<th>Existencia</th>
-				<th>
-				<?php 
-					$pro =0;
-						if(!empty($_REQUEST['proveedor'])){
-							$pro = $_REQUEST['proveedor'];
-						}
-					$query_proveedor = mysqli_query($conection, "SELECT * FROM proveedor WHERE estatus = 1 											ORDER BY proveedor ASC");
-					$result_proveedor = mysqli_num_rows($query_proveedor);
-				?>	
-				<select name="proveedor" id="search_proveedor">
-					<?php 
-					 	if($result_proveedor > 0){
-					 		while ($proveedor = mysqli_fetch_array($query_proveedor)) {
-					 			if($pro == $proveedor['codproveedor'])
-					 			{
-					?>
-						<option value="<?php echo $proveedor['codproveedor']; ?>" selected><?php echo $proveedor['proveedor'] ?></option>
-					<?php 
-								}else{
-					?>		
-						<option value="<?php echo $proveedor['codproveedor']; ?>"><?php echo $proveedor['proveedor'] ?></option>	
-					<?php		}
-					 		}
-					 	}
-
-					?>
-					
-				</select>
-				</th>
+				<th> Proveedor</th>
 				<th>Foto</th>
 				<th>Acciones</th>
 			</tr>
 			
 			<?php
-				//Paginador
+				// Buscador
 				$sql_registe = mysqli_query($conection, "SELECT COUNT(*) AS total_registro FROM producto 
-														WHERE $where" );
+														WHERE ( codproducto LIKE '%$busqueda%' OR
+																descripcion LIKE '%$busqueda%' OR
+																nombre 		LIKE '%$busqueda%'
+															)
+														AND estatus = 1 " );
 
 				$result_resgister = mysqli_fetch_array($sql_registe);
 				$total_registro = $result_resgister['total_registro'];
 
-				echo $total_registro;
-				exit();
+				// echo $total_registro;
 
 				$por_pagina = 10;
 
@@ -99,11 +83,17 @@
 				$desde = ($pagina-1) * $por_pagina;
 				$total_paginas = ceil($total_registro / $por_pagina);
 
-				$query = mysqli_query($conection, "SELECT p.codproducto,p.descripcion,p.precio,p.existencia,pr.proveedor, p.foto
+				//Realizando una busqueda general
+				$query = mysqli_query($conection, "SELECT p.codproducto,p.descripcion,p.nombre,p.precio,p.existencia,pr.proveedor, p.foto
 												   FROM producto p 
 												   INNER JOIN proveedor pr
 												   ON p.proveedor = pr.codproveedor
-												   WHERE p.estatus = 1 ORDER BY p.codproducto DESC LIMIT $desde,$por_pagina"); //ASC = acendente  DESC = desendente.
+												   WHERE 
+												  		(p.codproducto 	 	LIKE '%$busqueda%' OR 
+															p.descripcion 	LIKE '%$busqueda%' OR
+															p.nombre		LIKE '%$busqueda%' )
+													AND
+												  	 p.estatus = 1 ORDER BY p.codproducto DESC LIMIT $desde,$por_pagina"); //ASC = acendente  DESC = desendente.
 				
 				mysqli_close($conection);
 				$result = mysqli_num_rows($query);
@@ -119,8 +109,11 @@
 						}
 				?>
 				<tr class="row <?php echo $data['codproducto']; ?>"> 
+
 					<td><?php echo $data['codproducto']; ?></td>
 					<td><?php echo $data['descripcion']; ?></td>
+					<td><?php echo $data['nombre']; ?></td>
+
 					<td class="celPrecio"><?php echo $data['precio']; ?></td>
 					<td class="celExistencia"><?php echo $data['existencia']; ?></td>
 					<td><?php echo $data['proveedor']; ?></td>

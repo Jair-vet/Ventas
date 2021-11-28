@@ -141,7 +141,7 @@ body{
     color: black;
     font-size: 12pt;
 }
-///////////////////// Producto
+/*  PRODUCTOs */
 div #img_producto{
     width: 150px;
     height: auto;
@@ -225,13 +225,13 @@ div .img_producto2{
     height: auto;
     margin: auto; 
 }
-/////////////////////// VENTAS
+/* Ventas  */
 tbody {
     margin-left: auto;
     margin-right: auto;
     border: solid;
 }
-//////////////////////  FOTO 
+/*   FOTO  */
 .prevPhoto {
     display: flex;
     justify-content: space-between;
@@ -295,7 +295,7 @@ tbody {
 .link_see{
     color: #A901DB; 
 }
-////////// Botones
+/* BOTONES */
 .btn_cancel{
     font-size: 12pt;
     background: #fafafa;

@@ -26,30 +26,10 @@
 			<tr>
 				<th>Código</th>
 				<th>Descripción</th>
+				<th>Nombre</th>
 				<th>Precio</th>
 				<th>Existencia</th>
-				<th>
-				<?php 
-					
-					$query_proveedor = mysqli_query($conection, "SELECT * FROM proveedor WHERE estatus = 1 											ORDER BY proveedor ASC");
-					$result_proveedor = mysqli_num_rows($query_proveedor);
-				?>	
-				<select name="proveedor" id="search_proveedor">
-					<?php 
-
-					 	if($result_proveedor > 0){
-					 		while ($proveedor = mysqli_fetch_array($query_proveedor)) {
-					 			# code...
-					?>
-						<option value="<?php echo $proveedor['codproveedor']; ?>"><?php echo $proveedor['proveedor']; ?></option>
-					<?php 
-					 		}
-					 	}
-
-					?>
-					
-				</select>
-				</th>
+				<th>Proveedor</th>
 				<th>Foto</th>
 				<th>Acciones</th>
 			</tr>
@@ -72,7 +52,7 @@
 				$desde = ($pagina-1) * $por_pagina;
 				$total_paginas = ceil($total_registro / $por_pagina);
 
-				$query = mysqli_query($conection, "SELECT p.codproducto,p.descripcion,p.precio,p.existencia,pr.proveedor, p.foto
+				$query = mysqli_query($conection, "SELECT p.codproducto,p.descripcion,p.nombre,p.precio,p.existencia,pr.proveedor, p.foto
 												   FROM producto p 
 												   INNER JOIN proveedor pr
 												   ON p.proveedor = pr.codproveedor
@@ -94,6 +74,7 @@
 				<tr class="row <?php echo $data['codproducto']; ?>"> 
 					<td><?php echo $data['codproducto']; ?></td>
 					<td><?php echo $data['descripcion']; ?></td>
+					<td><?php echo $data['nombre']; ?></td>
 					<td class="celPrecio"><?php echo $data['precio']; ?></td>
 					<td class="celExistencia"><?php echo $data['existencia']; ?></td>
 					<td><?php echo $data['proveedor']; ?></td>

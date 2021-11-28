@@ -139,14 +139,16 @@ $(document).ready(function(){
         e.preventDefault();
         var sistema = getUrl();
         location.href = sistema+'buscar_producto.php?proveedor='+$(this).val();
+
     });
 
 }); // end Ready
 
 function getUrl(){
-    var loc = window.location;
-    var pathName = loc.pathName.substring(0, loc.pathName.lastIndexOf('/') + 1);
-    return loc.href.substring(0, loc.href.lenght - ((loc.pathName + loc.search + loc.hash).lenght - pathName.lenght));
+    var URLactual = window.location.href;
+    alert(URLactual);
+    // var pathName = loc.pathName.substring(0, loc.pathName.lastIndexOf('/') + 1);
+    // return loc.href.substring(0, loc.href.length - ((loc.pathName + loc.search + loc.hash).length - pathName.length));
 }
 
 function sendDataProduct(){
@@ -182,6 +184,7 @@ function sendDataProduct(){
     });
 
 }
+
 
 /// Boton de Eliminar Producto
 function delProduct(){

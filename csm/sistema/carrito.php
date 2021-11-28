@@ -39,7 +39,7 @@
 
 
 					if($data['foto'] != 'img_producto.png'){
-					$foto = 'csm/sistema/img/uploads/'.$data['foto'];
+					$foto = 'img/uploads/'.$data['foto'];
 					}else{
 						$foto = 'img/'.$data['foto'];
 					}											
@@ -103,6 +103,8 @@
     <title> CARRITO </title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../css/estilos.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript"  src="./js/scripts.js"></script>
 </head>
 
 <body>
@@ -131,13 +133,13 @@
    					class="cantidad">
    				</span><br>
    				<span class="subtotal">SubTotal:$ <?php echo $datos[$i]['Cantidad']*$datos[$i]['Precio'];?></span><br>
-   				<a href="#" class="eliminar" data-id="<?php echo $datos[$i]['Id']?>">Eliminar</a>
+   				<a href="#" class="eliminar" data-id="<?php echo $datos[$i]['Id']= null ?>">Eliminar</a>
    			</center>
    		</div>
    	<?php
    	$total=($datos[$i]['Cantidad']*$datos[$i]['Precio'])+$total;
 
-   			}
+   	}
 
    		}else {
    			echo'<center><h2>El Carrito de Compras esta vacio</h2></center>';
@@ -147,7 +149,7 @@
    		echo '<center><a href="ventas/compras.php" class="aceptar">Enviar Pedido</a></center>;';
    	}
    	?>
-   	<center><a href="productosp.php" class="ver">Ver catalogo</a></center>
+   	<center><a href="todos.php" class="ver">Ver catalogo</a></center>
 
    </section>
    
