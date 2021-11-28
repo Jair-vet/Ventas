@@ -1,33 +1,36 @@
 <?php
-	include '../conexion.php';
+	session_start();
+		
+	if($_SESSION['rol'] != 1 and $_SESSION['rol'] != 2 )
+	{
+		header("location: ./");
+	}
+	include "../../conexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="utf-8"/>
+	<?php include "../includes/scripts.php"; ?>
 	<title>Administración Ventas</title>
 </head>
 <body>
-	<link rel="stylesheet" href="../css/estilos.css">
-	<nav>
-    <ul>
-        <li><a href="../index.php"> Home</a></li>
-        <li class="principal">
-            <a href="../productosp.php"> Productos</a>
-        </li>
-        <li class="principal">
-            <a href="../contacto.php">Contacto</a>
-        </li>
+	<?php include "../includes/header_ventas_cerradas.php"; ?>
+<link rel="stylesheet" href="../css/style.css">
+	
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
-        <li class="principal">
-            <a href="../carrito.php"> Carrito</a>
-        </li>
-</nav>
 	<center><h1>Últimas Ventas</h1></center>
 	<selection>
-	<center><a href="../csm/sistema/index.php" class="aceptar">Index</a></center>
-	<center><a href="ventas_cerradas.php" class="return">Regresar</a></center>
-	<table style="width: 800px; margin-left: auto;margin-right: auto;border: solid;">	
+	<center><a href="../ventas_cerradas1.php" class="aceptar">Regresar</a></center><br>
+	<!-- <center><a href="ventas_cerradas.php" class="return">Regresar</a></center> -->
+	<table style="width: 900px; margin-left: auto;margin-right: auto;border: solid;">	
 		<tr >
 			<td>IMAGEN</td>
 			<td>NOMBRE</td>
@@ -54,7 +57,7 @@
 					}
 					$numerodeventa=$data['numerodeventa'];
 					echo '<tr>
-						<td><img src="../csm/sistema/img/uploads/'.$data['foto'].'" width="100px" heigth="100px" /></td>
+						<td><img src="../'.$data['foto'].'" width="100px" heigth="100px" /></td>
 						<td>'.$data['nombre'].'</td>
 						<td>'.$data['precio'].'</td>
 						<td>'.$data['cantidad'].'</td>
@@ -67,6 +70,6 @@
 		?>
 	</table>
 	</section>
-	<?php include "../incluides/footer.php"; ?>
+	<?php include "../includes/footer.php"; ?>
 </body>
 </html>

@@ -51,7 +51,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
 	<meta charset="UTF-8">
 	<?php include "includes/scripts.php"; ?>
 	<title>Registro Adm</title>

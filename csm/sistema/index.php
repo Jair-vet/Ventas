@@ -28,7 +28,7 @@
 		<?php
 		if($_SESSION['rol'] == 1){
 			echo '<br><br>';
-   		echo '<center><a href="ventas_cerradas.php" class="aceptar">Ventas Cerradas</a></center>';
+   		echo '<center><a href="ventas_cerradas1.php" class="aceptar">Ventas Cerradas</a></center>';
    	}
    		?>
 	</section>
