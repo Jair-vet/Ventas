@@ -160,10 +160,10 @@
 				<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion del producto" value="<?php echo $data_producto['descripcion'];?>">
 
 				<label for="precio">Precio</label>
-				<input type="number" name="precio" id="precio" placeholder="Precio del Producto" value="<?php echo $data_producto['precio'];?>">
+				<input type="number" name="precio" id="precio" placeholder="Precio del Producto" min=0 oninput="validity.valid||(value='');" value="<?php echo $data_producto['precio'];?>">
 
 				<label for="cantidad">Cantidad</label>
-		    	<input type="number" name="cantidad" id="cantidad" placeholder="Cantidad del Producto" value="<?php echo $data_producto['existencia'];?>">
+		    	<input type="number" name="cantidad" id="cantidad" placeholder="Cantidad del Producto" min=0 oninput="validity.valid||(value='');" value="<?php echo $data_producto['existencia'];?>">
 
 				<div class="photo">
 					<label for="foto">Foto</label>

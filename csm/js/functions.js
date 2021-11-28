@@ -44,7 +44,7 @@ $(document).ready(function(){
 
     });
 
-    // Modal form Delete Product
+    // Modal form ADD Product
     $('.add_product').click(function(e){  //funcion  para darle un click  AGREGAR
 
         e.preventDefault();
@@ -69,8 +69,8 @@ $(document).ready(function(){
                 $('.bodyModal').html('<form action="" method="post" name="form_add_product" id="form_add_product" onsubmit="event.preventDefault(); sendDataProduct();">'+ 
                                         '<h1><i class="fas fa-cubes" style="font-size: 45pt;"></i> <br> Agregar Producto</h1>'+        
                                         '<h2 class="nameProducto">'+info.descripcion+'</h2><br>'+
-                                        '<input type="number" name="cantidad" id="txtCantidad" placeholder="Cantidad del Producto" required><br>'+
-                                        '<input type="text" name="precio" id="txtPrecio" placeholder="Precio del Producto" required>'+
+                                        `<input type="number" name="cantidad" id="txtCantidad" placeholder="Cantidad del Producto" min=0 oninput="validity.valid||(value='');" required><br>`+
+                                        `<input type="text" name="precio" id="txtPrecio" placeholder="Precio del Producto"  min=0 oninput="validity.valid||(value='');" required>`+
                                         '<input type="hidden" name="producto_id" id="producto_id" value="'+info.codproducto+'" required>'+
                                         '<input type="hidden" name="action" value="addProduct" required>'+
                                         '<div class="alert alertAddProduct"></div>'+
@@ -90,7 +90,7 @@ $(document).ready(function(){
          $('.modal').fadeIn();
     });
 
-     // Modal form Add Product
+     // Modal form Delete Product
     $('.del_product').click(function(e){  //funcion  para darle un click  AGREGAR
 
         e.preventDefault();

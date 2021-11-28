@@ -86,7 +86,7 @@
 					<?php } ?>
 						|
 					<?php if($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2){ ?>
-						<a class="link_add add_product" product="<?php echo $data['codproducto']; ?>" href=" #"><i class="fas fa-plus"></i> Agregar</a>
+						<a class="add_product" product="<?php echo $data['codproducto']; ?>" href=" #"><i class="fas fa-plus"></i> Agregar</a>
 						|
 						<a class="link_edit" href="editar_producto.php?id=<?php echo $data['codproducto']; ?>"><i class="far fa-edit"></i> Editar</a>
 						|
