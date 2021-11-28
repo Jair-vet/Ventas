@@ -102,7 +102,7 @@
 				<input type="text" name="descripcion" id="descripcion" placeholder="Descripcion del producto">
 
 				<label for="precio">Precio</label>
-				<input type="number" name="precio" id="precio" placeholder="Precio del Producto">
+				<input type="number" name="precio" id="precio" placeholder="Precio del Producto" min=0 oninput="validity.valid||(value='');">
 
 				<label for="existencia">Cantidad</label>
 		    	<input type="number" name="existencia" id="existencia" placeholder="Cantidad del Producto">
