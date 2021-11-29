@@ -1,3 +1,115 @@
+@import url(../fonts/GothamBook.css);
+@import url(../fonts/GothamBold.css);
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{ 
+	background: #ededed;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'arial';
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+h1{
+	font-size: 26px;
+}
+h2{
+	font-size: 20px; 
+}
+h3{
+	font-size: 18px;
+}
+h4{
+	font-size: 16px;
+}
+h5{
+	font-size: 14px;
+}
+h6{
+	font-size: 12px;
+}
+p{
+	font-family: 'arial';
+	letter-spacing: 2px;
+	font-size: 14px;
+	line-height: 20px;
+}
+a{
+	text-decoration: none;
+	font-family: arial;
+	letter-spacing: 1px;
+}
+span {
+    font-family: 'GothamBook';
+    letter-spacing: 1px;
+    font-size: 14px;
+    line-height: 20px;
+}
+header{
+	position: fixed;
+	width: 100%;
+}
+.header{
+	color: #FFF;
+	background: #006400;
+	height: 35px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+.optionsBar{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.optionsBar span {
+    color: #FFF;
+    font-size: 11pt;
+    font-family: 'GothamBook';
+    text-transform: uppercase;
+    margin-left: 30px;
+}
+.photouser {
+    margin-left: 30px;
+    width: 25px;
+    height: 25px;
+}
+.close{
+	width: 25px;
+    height: 25px;
+}
+.carro{
+	width: 40px;
+    height: 40px;
+    margin-block-start: 20px;
+}
+.letra{
+	font-family: 'arial';
+	letter-spacing: 2px;
+	font-size: 18px;
+	line-height: 20px;
+	text-align: center;
+}
+.optionsBar a {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    margin-left: 30px;
+}
 nav ul {
     background: #058167;
     /*background: #05817d;*/
@@ -10,7 +122,9 @@ nav ul {
     justify-content: left;
     align-items: center;
 }
-
+nav ul > li a{
+	position: relative;
+}
 nav a {
     text-decoration: none;
     color: #FFF;
@@ -30,7 +144,7 @@ a{
     text-decoration: none;
 }
 nav .principal>a {
-    background: url(../images/arrow_bottom.png) no-repeat;
+    background: url(../img/arrow_bottom.png) no-repeat;
     background-position-x: 0%;
     background-position-y: 0%;
     background-size: auto auto;
@@ -89,11 +203,12 @@ label{
 }
 input,select{
     display: block;
-    width: 100%;
+    width: 50%;
     font-size: 11pt;
     padding: 5px;
     border: 1px solid #85929e;
-    border-radius: 5px;
+    border-radius: 7px;
+    text-align: center;
 }
 header a{
     width: 50px;

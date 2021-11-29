@@ -56,7 +56,7 @@
 
 				if(($nombre_foto != '' && ($_POST['foto_actual'] != 'img_produto.png')) || ($_POST['foto_actual'] != $_POST['foto_remove']))
 				{
-					unlink('img/uploads/'.$_POST['foto_actual']);
+					unlink('/img/uploads/'.$_POST['foto_actual']);
 				}
 
 				if($nombre_foto != '')
